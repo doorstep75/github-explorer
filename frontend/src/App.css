@@ -1,0 +1,48 @@
+/* src/App.css */
+body {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+}
+
+.container {
+  max-width: 800px;
+  margin: auto;
+}
+
+h1,
+h2,
+h3 {
+  color: #333;
+}
+
+input[type='text'] {
+  padding: 10px;
+  width: 300px;
+  margin-right: 10px;
+}
+
+button {
+  padding: 10px;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  margin-bottom: 5px;
+}
+
+a {
+  color: blue;
+  text-decoration: none;
+}
+
+a.external-link {
+  color: green;
+}
+
+a:hover {
+  text-decoration: underline;
+}
