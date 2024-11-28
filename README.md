@@ -114,7 +114,7 @@ Before you begin, ensure you have the following installed on your machine:
 - Click on a commit message to view more details on GitHub.
 
 ### Project Structure
-
+```bash
 github-explorer/
 ├── backend/
 │   ├── controllers/
@@ -122,8 +122,8 @@ github-explorer/
 │   ├── routes/
 │   │   └── githubRoutes.js
 │   ├── index.js
-│   ├── package.json
-│   └── ...
+│   └── package.json
+│   …
 ├── frontend/
 │   ├── src/
 │   │   ├── pages/
@@ -133,10 +133,11 @@ github-explorer/
 │   │   ├── App.js
 │   │   └── index.js
 │   ├── public/
-│   ├── package.json
-│   └── ...
+│   └── package.json
+│   …
 ├── .gitignore
 └── README.md
+```
 
 - backend/: Contains the Express server code.
 - frontend/: Contains the React application code.
