@@ -16,6 +16,7 @@ function Home() {
   const [loading, setLoading] = useState(false); // Loading state
   const [error, setError] = useState(''); // Error message
   const [lastQuery, setLastQuery] = useState(''); // Tracks the last searched query
+  const [hasSearched, setHasSearched] = useState(false); // Tracks if a search has been attempted
 
   /**
    * Handles the search form submission.
@@ -26,11 +27,12 @@ function Home() {
   const searchUsers = async (e) => {
     e.preventDefault();
     if (query.trim() === '') {
-      return;
+      return; // Prevent empty searches
     }
     setLoading(true);
     setUsers([]); // Clear previous results
     setError('');
+    setHasSearched(true); // Mark that a search has been attempted
     try {
       const res = await axios.get('http://localhost:5000/api/github/search/users', {
         params: { q: query },
@@ -48,10 +50,11 @@ function Home() {
   return (
     <div className="container">
       <h1>GitHub User Search</h1>
-      <p>Below, simply enter the GitHub username to have a list of possible users 
-        returned. Then click on the link to the user's profile that you wish to view.
-
+      <p>
+        Below, simply enter the GitHub username to have a list of possible users returned. Then click
+        on the link to the user's profile that you wish to view.
       </p>
+
       {/* Search Form */}
       <form onSubmit={searchUsers}>
         <input
@@ -73,7 +76,7 @@ function Home() {
       {error && <p>{error}</p>}
 
       {/* No Users Found Message */}
-      {!loading && users.length === 0 && query === lastQuery && (
+      {!loading && hasSearched && users.length === 0 && query === lastQuery && (
         <p>Sorry, no users found. Please try a different search.</p>
       )}
 

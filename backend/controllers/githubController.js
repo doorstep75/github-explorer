@@ -43,6 +43,23 @@ exports.getUserDetails = async (req, res) => {
   }
 };
 
+/** Sorry, I don't know how this managed to disappear from my project
+ * Retrieves detailed information about a specific GitHub repository.
+ *
+ * @param {Object} req - Express request object containing username and repo parameters.
+ * @param {Object} res - Express response object for sending the response.
+ */
+exports.getRepoDetails = async (req, res) => {
+  const { username, repo } = req.params; // Extract username and repo from URL parameters
+  try {
+    const response = await axios.get(`${BASE_URL}/repos/${username}/${repo}`);
+    res.json(response.data); // Send the repository details back to the client
+  } catch (err) {
+    console.error('Error fetching repository details:', err.message);
+    res.status(500).json({ error: 'Error fetching repository details' });
+  }
+};
+
 /**
  * Retrieves the recent commits for a specific repository of a user.
  *
@@ -53,7 +70,7 @@ exports.getRepoCommits = async (req, res) => {
   const { username, repo } = req.params; // Extract username and repo from URL parameters
   try {
     const response = await axios.get(`${BASE_URL}/repos/${username}/${repo}/commits`, {
-      params: { per_page: 5 },
+      params: { per_page: 5 }, // Limit to the 5 most recent commits
     });
     res.json(response.data); // Send the commits data back to the client
   } catch (err) {
