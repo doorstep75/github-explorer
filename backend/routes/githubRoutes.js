@@ -21,4 +21,9 @@ router.get('/users/:username', githubController.getUserDetails);
  */
 router.get('/repos/:username/:repo', githubController.getRepoDetails);
 
+/**
+ * Route to get repository commits
+ */
+router.get('/repos/:username/:repo/commits', githubController.getRepoCommits);
+
 module.exports = router;

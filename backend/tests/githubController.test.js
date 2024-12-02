@@ -13,5 +13,10 @@ describe('GitHub API Routes', () => {
     expect(res.body.items).toBeDefined();
   });
 
-  // Add more tests as needed
+  it('should fetch repository commits', async () => {
+    const res = await request(app).get('/api/github/repos/octocat/Hello-World/commits');
+    expect(res.statusCode).toEqual(200);
+    expect(res.body).toBeInstanceOf(Array); // Expecting an array of commits
+  });
+
 });
